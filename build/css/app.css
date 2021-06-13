@@ -471,3 +471,30 @@ h3 {
   background-color: #F53756;
   padding: 1rem 2rem;
 }
+
+.about-festival {
+  padding: 5rem 0;
+}
+@media (min-width: 768px) {
+  .about-festival {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+}
+
+.festival-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.festival-information h2 {
+  font-size: 3rem;
+}
+.festival-information .date {
+  font-weight: bold;
+  color: #F53756;
+}
+.festival-information .text {
+  line-height: 1.5;
+}
