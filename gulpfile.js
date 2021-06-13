@@ -1,8 +1,15 @@
-const { src, dest, watch } = require("gulp");
+const { series, src, dest, watch } = require("gulp");
 const sass = require("gulp-sass");
 const imagemin = require("gulp-imagemin");
+const notify = require("gulp-notify");
+const webp = require("gulp-webp");
 
 sass.compiler = require("dart-sass");
+
+const paths = {
+    images: "./src/img/**/*",
+    scss: "./src/scss/**/*.scss",
+};
 
 function css() {
     return src("./src/scss/app.scss").pipe(sass()).pipe(dest("./build/css"));
@@ -19,14 +26,26 @@ function minifyCSS() {
 }
 
 function watchFiles() {
-    watch("./src/scss/**/*.scss", css);
+    watch(paths.scss, css);
 }
 
 function minifyImage() {
-    return src("./src/img/**/*").pipe(imagemin()).pipe(dest("./build/img"));
+    return src(paths.images)
+        .pipe(imagemin())
+        .pipe(dest("./build/img"))
+        .pipe(notify({ message: "Image minified." }));
+}
+
+function convertToWebp() {
+    return src(paths.images)
+        .pipe(webp())
+        .pipe(dest("./build/img"))
+        .pipe(notify({ message: "Image converted to webp." }));
 }
 
 exports.css = css;
 exports.minifyCSS = minifyCSS;
 exports.minifyImage = minifyImage;
 exports.watch = watchFiles;
+exports.convertwebp = convertToWebp;
+exports.default = series(css, minifyImage, convertToWebp, watchFiles);
