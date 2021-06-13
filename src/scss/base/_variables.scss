@@ -2,13 +2,16 @@ $principalFont: "Montserrat", sans-serif;
 
 // Colors
 $green: #4cb8b3;
-$pink: #f53756;
+$pink: #F53756;
 $yellow: #fef46d;
 $purple: #752f97;
 $black: #000000;
 $white: #ffffff;
 
 // Media Queries
+$cellphone: 480px;
+$tablet: 768px;
+$desktop: 1200px;
 
 // Fonts
 $thin: 300;
@@ -17,3 +20,4 @@ $bold: 700;
 $dark: 900;
 
 // Separations
+$separation: 5rem;
