@@ -533,6 +533,7 @@ h3 {
   }
 }
 .scenarios-container .scenario-name {
+  padding-top: 2.5rem;
   color: #000000;
   font-size: 2rem;
   font-weight: 300;
@@ -629,4 +630,70 @@ h3 {
 }
 .overlay p:hover {
   cursor: pointer;
+}
+
+.tickets {
+  padding: 5rem 0;
+}
+.tickets h3 {
+  color: #ffffff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .tickets-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+}
+.tickets-container p {
+  color: #ffffff;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.pass {
+  width: 100%;
+  border-spacing: 0;
+}
+.pass thead {
+  background-color: #F53756;
+}
+.pass thead th {
+  padding: 1.25rem;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.pass tbody {
+  background-color: #ffffff;
+}
+.pass tbody td {
+  padding: 1.25rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+.pass tbody tr:last-of-type td {
+  border-bottom: none;
+}
+.pass tfoot {
+  background-color: #752f97;
+}
+.pass tfoot td {
+  color: #ffffff;
+  text-align: center;
+  font-size: 3rem;
+  padding: 1.25rem 0;
+}
+
+.footer {
+  background-color: #F53756;
+  text-align: center;
+  padding: 1.25rem 0;
+}
+.footer p {
+  color: #ffffff;
+  margin: 0;
 }

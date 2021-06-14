@@ -1,0 +1,66 @@
+.tickets {
+    padding: $separation 0;
+
+    h3 {
+        color: $white;
+        text-align: center;
+    }
+}
+
+.tickets-container {
+    @include tablet {
+        @include grid(2, $separation);
+    }
+
+    p {
+        color: $white;
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.pass {
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: $pink;
+
+        th {
+            padding: $separation / 4;
+            color: $white;
+            font-weight: $thin;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    tbody {
+        background-color: $white;
+
+        td {
+            padding: $separation / 4;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        tr {
+            &:last-of-type {
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    tfoot {
+        background-color: $purple;
+
+        td {
+            color: $white;
+            text-align: center;
+            font-size: 3rem;
+            padding: $separation / 4 0;
+        }
+    }
+}
