@@ -5,6 +5,16 @@ const notify = require("gulp-notify");
 const webp = require("gulp-webp");
 const concat = require("gulp-concat");
 
+// CSS Utilities
+const autoprefixer = require("autoprefixer");
+const postcss = require("gulp-postcss");
+const cssnano = require("cssnano");
+const sourcemaps = require("gulp-sourcemaps");
+
+// JS Utilities
+const terser = require("gulp-terser-js");
+const rename = require("gulp-rename");
+
 sass.compiler = require("dart-sass");
 
 const paths = {
@@ -14,7 +24,12 @@ const paths = {
 };
 
 function css() {
-    return src("./src/scss/app.scss").pipe(sass()).pipe(dest("./build/css"));
+    return src("./src/scss/app.scss")
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(sourcemaps.write("."))
+        .pipe(dest("./build/css"));
 }
 
 function minifyCSS() {
@@ -47,7 +62,13 @@ function convertToWebp() {
 }
 
 function javascript() {
-    return src(paths.js).pipe(concat("bundle.js")).pipe(dest("./build/js"));
+    return src(paths.js)
+        .pipe(sourcemaps.init())
+        .pipe(concat("bundle.js"))
+        .pipe(terser())
+        .pipe(sourcemaps.write("."))
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(dest("./build/js"));
 }
 
 exports.css = css;
